@@ -33,11 +33,6 @@ feign:
     config:
       default:
         #建立连接所用的时间，适用于网络状况正常的情况下，两端连接所需要的时间
-        ConnectTimeOut: 5000
+        ConnectTimeOut: 10000
         #指建立连接后从服务端读取到可用资源所用的时间
-        ReadTimeOut: 5000
-#ribbon:
-#  #建立连接时间
-#  ReadTimeout: 5000
-#  #连接后等待时间
-#  ConnectTimeout: 5000
+        ReadTimeOut: 10000
