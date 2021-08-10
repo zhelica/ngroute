@@ -1,0 +1,11 @@
+com\cmos\springcloud\service\impl\UserDetailsServiceImpl.class
+com\cmos\springcloud\controller\UserLoginController.class
+com\cmos\springcloud\controller\AlgorithmController.class
+com\cmos\springcloud\service\IMessageProduct.class
+com\cmos\springcloud\service\impl\UserServiceImpl.class
+com\cmos\springcloud\mapper\UserMapper.class
+com\cmos\springcloud\NgrouteServer9001.class
+com\cmos\springcloud\service\TokenService.class
+com\cmos\springcloud\service\impl\IMessageProductImpl.class
+com\cmos\springcloud\mapper\IMessageProductMapper.class
+com\cmos\springcloud\service\UserService.class
