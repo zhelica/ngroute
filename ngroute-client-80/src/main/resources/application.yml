@@ -1,0 +1,43 @@
+server:
+  port: 80
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: ngroute-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #配置nacos地址
+    sentinel:
+      transport:
+        dashboard: localhost:8718 #sentinel地址
+        port: 8719
+      # nacos配置持久化
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 127.0.0.1:8848 #nacos地址
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+#消费者访问微服务服务端名称
+service-url:
+  nacos-user-service: http://ngroute-server
+#激活sentinel对feign的支持
+feign:
+  sentinel:
+    enabled: true
+  client:
+    config:
+      default:
+        #建立连接所用的时间，适用于网络状况正常的情况下，两端连接所需要的时间
+        ConnectTimeOut: 5000
+        #指建立连接后从服务端读取到可用资源所用的时间
+        ReadTimeOut: 5000
+#ribbon:
+#  #建立连接时间
+#  ReadTimeout: 5000
+#  #连接后等待时间
+#  ConnectTimeout: 5000
