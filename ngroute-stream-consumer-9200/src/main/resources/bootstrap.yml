@@ -1,0 +1,50 @@
+server:
+  port: 9200
+spring:
+  application:
+    name: ngroute-stream-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml #指定yaml格式的配置
+        group: DEFAULT_GROUP
+        namespace: 022fc42f-2056-4884-92c1-84a35210f844 #命名空间id
+    stream:
+      binders: #在此处配置要绑定的rabbitmq的服务消息
+        defaultRabbit: #表示定义的名称，用于binding整合
+          type: rabbit #消息组件类型
+          environment: #设置rabbitmq的相关配置
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings: #服务的整合处理
+        input: #这个名字是一个通道的名称
+          destination: studyExchange #表示要使用的Exchange名称定义
+          content-type: application/json #设置消息类型，本次为json，文本则设置“text/plain”
+          binder: defaultRabbit #设置要绑定的消息服务的具体设置
+          group: atcloudA #所属分组
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/ngroute
+#    username: root
+#    password: root
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# MyBatis配置
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.cmos.springcloud.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  # 加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml
