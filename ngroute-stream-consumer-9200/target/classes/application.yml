@@ -1,5 +1,0 @@
-spring:
-  profiles:
-    active: test #表示开发环境
-    #active: test #表示开发环境
-    #active: info #表示开发环境
