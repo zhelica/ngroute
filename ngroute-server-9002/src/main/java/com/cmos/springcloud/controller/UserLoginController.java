@@ -11,6 +11,7 @@ import com.cmos.springcloud.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -58,6 +59,7 @@ public class UserLoginController {
             return AjaxResult.error(HttpStatus.ERROR,"注册失败");
         }
     }
+    @PreAuthorize("@ss.hasPermi('selectUserByUserName')")
     @PostMapping(value = "/selectUserByUserName")
     public AjaxResult selectUserByUserName(@RequestBody Map<String,Object> map) {
         Map<String, Object> params = (Map<String, Object>) map.get("params");

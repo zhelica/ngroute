@@ -72,3 +72,8 @@ token:
   secret: abcdefghijklmnopqrstuvwxyz
   # 令牌有效期（默认30分钟）
   expireTime: 30
+# 日志配置
+logging:
+  level:
+    com.huawei: debug
+    org.springframework: warn
